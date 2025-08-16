@@ -3,6 +3,8 @@
 ## Bugs & My Fixes (Screen recording):
 https://drive.google.com/drive/folders/1G_DZqFCG8KcajqpD5Nz1yrEOT8df_FRf?usp=sharing
 
+<img width="1920" height="1080" alt="Hiphop Boombox" src="https://github.com/user-attachments/assets/88eb10e9-1a82-47a2-93af-19e1115e241a" />
+
 ## Bug
 - Videos continue playing in the background even after closing the app.
 - The app must be force killed to stop the video playback.
