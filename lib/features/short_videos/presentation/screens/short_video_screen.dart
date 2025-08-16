@@ -18,29 +18,37 @@ class _ShortVideoScreenState extends State<ShortVideoScreen> with WidgetsBinding
   bool _isAppPaused=false;
   
   final _shortVideos=[
-    // ShortVideoModel(
-    //     title: 'Drishyam 2 Epic dialogue Akshay khanna 😯😯',
-    //     videoLink: 'https://github.com/user-attachments/assets/e827b1a2-a06e-483b-b14a-88c067808dd2',
-    //     logo: '2eMpfzTORriwU48qVNxybbpSbP5.png',
-    //     likes: 3100
-    // ),
+    ShortVideoModel(
+        title: 'Drishyam 2',
+        description: 'Drishyam 2 Epic dialogue Akshay khanna 😯😯',
+        category: 'Thriller',
+        videoLink: 'https://github.com/user-attachments/assets/e827b1a2-a06e-483b-b14a-88c067808dd2',
+        posterImg: 'gIClWRv5OSe8rl5Koi0AeUcCZ9Z.jpg',
+        likes: 31000
+    ),
 
     ShortVideoModel(
-        title: 'Friends Or Worse Enemies?😭 | Golmaal Fun Unlimited',
+        title: 'Golmaal Fun Unlimited',
+        description: 'Friends Or Worse Enemies?😭 | Golmaal Fun Unlimited',
+        category: 'Comedy',
         videoLink: 'https://github.com/user-attachments/assets/11a06972-50a2-4314-a451-dcf42fe7024d',
-        logo: 'wsQ4VjBGUe34lxEor382Xx2DHPC.png',
-        likes: 51000
+        posterImg: '3ubefqLk26Gy0lXCfGIu8hQrBak.jpg',
+        likes: 5100000,
     ),
     ShortVideoModel(
-        title: 'Nothing, just Gaitonde laying out plain facts 😂😎',
+        title: 'Drishyam',
+        description: 'Nothing, just Gaitonde laying out plain facts 😂😎',
+        category: 'Thriller',
         videoLink: 'https://github.com/user-attachments/assets/f67f8581-d77e-432a-86ad-0a095e7ce4dd',
-        logo: '2eMpfzTORriwU48qVNxybbpSbP5.png',
+        posterImg: 'gIClWRv5OSe8rl5Koi0AeUcCZ9Z.jpg',
         likes: 10100
     ),
     ShortVideoModel(
-        title: 'Lucky\'s funny call with Gopal 😂 | Golmaal Returns',
+        title: 'Golmaal Fun Unlimited',
+        description: 'Lucky\'s funny call with Gopal 😂 | Golmaal Returns',
+        category: 'Comedy',
         videoLink: 'https://github.com/user-attachments/assets/a38047ca-af55-4948-84e9-45d40ebb928c',
-        logo: 'wsQ4VjBGUe34lxEor382Xx2DHPC.png',
+        posterImg: '3ubefqLk26Gy0lXCfGIu8hQrBak.jpg',
         likes: 781000
     ),
 
@@ -120,7 +128,9 @@ class _ShortVideoScreenState extends State<ShortVideoScreen> with WidgetsBinding
             controller: _controllers[index]!,
             title: shortVideoModel.title,
             likes: shortVideoModel.likes,
-            logo: shortVideoModel.logo,
+            posterImg: shortVideoModel.posterImg,
+            description: shortVideoModel.description,
+            contentCategory: shortVideoModel.category,
           );
         },
         onPageChanged: (index){

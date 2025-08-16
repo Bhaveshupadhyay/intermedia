@@ -8,13 +8,16 @@ import 'package:shawn/core/theme/app_color.dart';
 import 'package:shawn/utils/convert_utils.dart';
 import 'package:video_player/video_player.dart';
 
+
 class ShortVideoWidget extends StatelessWidget {
   final VideoPlayerController controller;
   final int index;
   final String title;
+  final String description;
+  final String contentCategory;
   final int likes;
-  final String logo;
-  const ShortVideoWidget({super.key, required this.index, required this.controller, required this.title, required this.likes, required this.logo});
+  final String posterImg;
+  const ShortVideoWidget({super.key, required this.index, required this.controller, required this.title, required this.likes, required this.posterImg, required this.description, required this.contentCategory});
 
   @override
   Widget build(BuildContext context) {
@@ -24,35 +27,34 @@ class ShortVideoWidget extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: (){},
-          child: Center(
-            child: controller.value.isInitialized ?
-            AspectRatio(
-              aspectRatio: controller.value.aspectRatio,
-              child: VideoPlayer(controller),
-            )
-                :
-            Loader(),
-          ),
+          child: controller.value.isInitialized ?
+          AspectRatio(
+            aspectRatio: controller.value.aspectRatio,
+            child: VideoPlayer(controller),
+          )
+              :
+          Center(child: Loader()),
         ),
-        Positioned.fill(
-          left: 10.w,
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: SafeArea(
-              child: SizedBox(
-                width: 0.45.sw,
-                height: 0.2.sw,
-                child: CachedNetworkImage(
-                  imageUrl: 'https://image.tmdb.org/t/p/original/$logo',
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-          ),
-        ),
+        // Positioned.fill(
+        //   left: 10.w,
+        //   child: Align(
+        //     alignment: Alignment.topLeft,
+        //     child: SafeArea(
+        //       child: SizedBox(
+        //         width: 0.45.sw,
+        //         height: 0.2.sw,
+        //         child: CachedNetworkImage(
+        //           imageUrl: 'https://image.tmdb.org/t/p/original/$logo',
+        //           fit: BoxFit.fill,
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
         Positioned.fill(
           left: 10.w,
           right: 10.w,
+          bottom: 20.h,
           child: Align(
             alignment: Alignment.centerRight,
             child: Row(
@@ -62,13 +64,83 @@ class ShortVideoWidget extends StatelessWidget {
               children: [
                 Expanded(
                   child: Column(
+                    spacing: 8.h,
                     mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Row(
+                        spacing: 10.w,
+                        // crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 60.w,
+                            height: 65.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.r),
+                              image: DecorationImage(
+                                image: NetworkImage('https://image.tmdb.org/t/p/w1280/$posterImg'),
+                                fit: BoxFit.cover
+                              )
+                            ),
+                          ),
+                          Flexible(
+                            child: Column(
+                              spacing: 5.h,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(title,
+                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                      fontSize: 17.sp,
+                                      color: AppColors.white,
+                                    fontWeight: FontWeight.w600
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                _glassyContainer(
+                                  padding: EdgeInsets.symmetric(vertical: 5.h,horizontal: 10.w),
+                                    child: Text(contentCategory,
+                                      style: theme.textTheme.bodySmall?.copyWith(
+                                          fontSize: 13.sp,
+                                          color: AppColors.white
+                                      ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                ),
 
-                      Text(title,
-                        style: theme.textTheme.bodySmall,
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      Text(description,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                            color: AppColors.white,
+                            fontWeight: FontWeight.w200
+                        ),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
+                      ),
+
+                      _glassyContainer(
+                        padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 10.w),
+                        child: Row(
+                          spacing: 8.w,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.play_arrow,size: 18.sp, color: AppColors.white),
+                            Text('Watch Now',
+                              style: theme.textTheme.bodySmall?.copyWith(
+                                  fontSize: 18.sp,
+                                  color: AppColors.white
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -129,7 +201,7 @@ class ShortVideoWidget extends StatelessWidget {
                           theme: theme,
                           icon: Icons.mode_comment_outlined,
                           iconColor: AppColors.white,
-                          text: ConvertUtils.formatNumber(850100),
+                          text: ConvertUtils.formatNumber(8500),
                           onTap: (){
 
                           }
@@ -143,19 +215,6 @@ class ShortVideoWidget extends StatelessWidget {
 
                           }
                       ),
-
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(5.r),
-                        child: CachedNetworkImage(
-                            imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Zayn_Wiki_%28cropped%29.jpg/960px-Zayn_Wiki_%28cropped%29.jpg',
-                          width: 45.w,
-                          height: 45.w,
-                          placeholder: (context,s){
-                              return ShimmerLoader(width: 45.w,height: 45.w,);
-                          },
-                          fit: BoxFit.cover,
-                        ),
-                      )
 
                     ],
                   ),
@@ -189,5 +248,15 @@ class ShortVideoWidget extends StatelessWidget {
             ),
           ],
         ),
+      );
+
+  Widget _glassyContainer({required Widget child, required EdgeInsets padding})=>
+      Container(
+        padding: padding,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.r),
+            color: Colors.grey.withValues(alpha: 0.45)
+        ),
+        child: child
       );
 }
