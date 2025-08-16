@@ -21,7 +21,8 @@ https://drive.google.com/drive/folders/1G_DZqFCG8KcajqpD5Nz1yrEOT8df_FRf?usp=sha
     if (state == AppLifecycleState.paused) {
       _isAppPaused=true;
       _pauseVideo(_currentIndex);
-    } else if (state == AppLifecycleState.resumed) {
+    }
+    else if (state == AppLifecycleState.resumed) {
       _isAppPaused=false;
       _playVideo(_currentIndex);
     }
@@ -36,17 +37,6 @@ https://drive.google.com/drive/folders/1G_DZqFCG8KcajqpD5Nz1yrEOT8df_FRf?usp=sha
       setState(() {
         playerController.play();
       });
-    }
-  }
-```
-
-## Pause video
-
-```bash
- void _pauseVideo(int index){
-    if(index>=0){
-      final playerController= _controllers[index]!;
-      playerController.pause();
     }
   }
 ```
