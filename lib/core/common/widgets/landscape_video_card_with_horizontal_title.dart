@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shawn/core/common/widgets/shimmer_loader.dart';
 import 'package:shawn/core/constant/links.dart';
 
-import '../../../utils/convert_utils.dart';
+import '../../utils/convert_utils.dart';
 
 class LandscapeVideoWithHorizontalTitle extends StatelessWidget {
   final int episodeId;

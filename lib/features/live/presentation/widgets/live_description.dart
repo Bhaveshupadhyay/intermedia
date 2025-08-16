@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../utils/convert_utils.dart';
+import '../../../../core/utils/convert_utils.dart';
 
 
 class LiveDescription extends StatelessWidget {

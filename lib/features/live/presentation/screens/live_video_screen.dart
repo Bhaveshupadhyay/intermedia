@@ -8,7 +8,7 @@ import 'package:shawn/features/live/presentation/widgets/live_comments_dialog.da
 import 'package:shawn/features/live/presentation/widgets/live_description.dart';
 
 import '../../../../show_webview.dart';
-import '../../../../utils/convert_utils.dart';
+import '../../../../core/utils/convert_utils.dart';
 import '../cubit/comment_cubit.dart';
 
 class LiveVideoScreen extends StatelessWidget {

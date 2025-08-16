@@ -1,13 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:like_button/like_button.dart';
 import 'package:shawn/core/common/widgets/loader.dart';
-import 'package:shawn/core/common/widgets/shimmer_loader.dart';
 import 'package:shawn/core/theme/app_color.dart';
-import 'package:shawn/utils/convert_utils.dart';
+import 'package:shawn/core/utils/convert_utils.dart';
 import 'package:video_player/video_player.dart';
-
 
 class ShortVideoWidget extends StatelessWidget {
   final VideoPlayerController controller;
@@ -43,7 +40,6 @@ class ShortVideoWidget extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: Row(
               spacing: 20.w,
-              // mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Expanded(
@@ -54,7 +50,6 @@ class ShortVideoWidget extends StatelessWidget {
                     children: [
                       Row(
                         spacing: 10.w,
-                        // crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
                             width: 60.w,
@@ -110,6 +105,7 @@ class ShortVideoWidget extends StatelessWidget {
 
                       _glassyContainer(
                         padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 10.w),
+                        onTap: (){},
                         child: Row(
                           spacing: 8.w,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -234,13 +230,16 @@ class ShortVideoWidget extends StatelessWidget {
         ),
       );
 
-  Widget _glassyContainer({required Widget child, required EdgeInsets padding})=>
-      Container(
-        padding: padding,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.r),
-            color: Colors.grey.withValues(alpha: 0.45)
+  Widget _glassyContainer({required Widget child, required EdgeInsets padding, VoidCallback? onTap})=>
+      GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: padding,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.r),
+              color: Colors.grey.withValues(alpha: 0.45)
+          ),
+          child: child
         ),
-        child: child
       );
 }

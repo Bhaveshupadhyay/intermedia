@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shawn/core/common/model/comment_model.dart';
-import 'package:shawn/core/theme/app_color.dart';
 
-import '../../../../utils/convert_utils.dart';
+import '../../../../core/utils/convert_utils.dart';
 import 'live_comment_user_image.dart';
 
 class CommentWidget extends StatelessWidget {
