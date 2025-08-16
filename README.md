@@ -9,7 +9,7 @@ https://drive.google.com/drive/folders/1G_DZqFCG8KcajqpD5Nz1yrEOT8df_FRf?usp=sha
 
 ## Fixes
 - I used WidgetsBindingObserver to manage the app lifecycle, pausing the video when the app was paused and resuming it when it resumed.
-- Additionally, I used a global variable (_isAppPaused) to track whether the app is paused.
+- Additionally, I used a global variable `_isAppPaused` to track whether the app is paused.
 - Within the playVideo method, the video is played only when _isAppPaused is false.
 
 ```bash
