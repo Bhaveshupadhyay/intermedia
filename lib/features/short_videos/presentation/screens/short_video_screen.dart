@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shawn/features/short_videos/model/short_video_model.dart';
 import 'package:shawn/features/short_videos/presentation/widgets/short_video_widget.dart';
 import 'package:video_player/video_player.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 
 class ShortVideoScreen extends StatefulWidget {
   const ShortVideoScreen({super.key});
@@ -69,7 +67,9 @@ class _ShortVideoScreenState extends State<ShortVideoScreen> with WidgetsBinding
       _controllers[i]=_playerController(_shortVideos[i].videoLink);
     }
     _initController(0);
-    _initController(1);
+    if(_shortVideos.length>1){
+      _initController(1);
+    }
   }
 
   void _initController(int index){
@@ -80,17 +80,14 @@ class _ShortVideoScreenState extends State<ShortVideoScreen> with WidgetsBinding
 
     if(!playerController.value.isInitialized){
       playerController.initialize().then((_){
-        print('initialized $index');
         _playVideo(index);
       });
-      print('init $index');
     }
   }
 
   void _playVideo(int index){
     final playerController= _controllers[index]!;
     if(playerController.value.isInitialized && !playerController.value.isPlaying && _currentIndex==index && !_isAppPaused){
-      print('video Play $index');
       setState(() {
         playerController.play();
       });
@@ -108,7 +105,6 @@ class _ShortVideoScreenState extends State<ShortVideoScreen> with WidgetsBinding
     if(index>=0){
       _controllers[index]?.dispose();
       _controllers[index]=null;
-      print('dispose $index');
     }
   }
 
@@ -120,8 +116,6 @@ class _ShortVideoScreenState extends State<ShortVideoScreen> with WidgetsBinding
         itemCount: _controllers.length,
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
-          print('page loaded $index');
-          // return Text('data $index');
           final shortVideoModel= _shortVideos[index];
           return ShortVideoWidget(
             index: index,
@@ -136,7 +130,6 @@ class _ShortVideoScreenState extends State<ShortVideoScreen> with WidgetsBinding
         onPageChanged: (index){
           //if user scroll upwards
           if(index<_currentIndex && index>0){
-            print('in $index');
             _initController(index-1);
           }
           if(index % 2==0){

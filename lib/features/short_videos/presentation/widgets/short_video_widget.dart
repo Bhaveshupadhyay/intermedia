@@ -35,22 +35,6 @@ class ShortVideoWidget extends StatelessWidget {
               :
           Center(child: Loader()),
         ),
-        // Positioned.fill(
-        //   left: 10.w,
-        //   child: Align(
-        //     alignment: Alignment.topLeft,
-        //     child: SafeArea(
-        //       child: SizedBox(
-        //         width: 0.45.sw,
-        //         height: 0.2.sw,
-        //         child: CachedNetworkImage(
-        //           imageUrl: 'https://image.tmdb.org/t/p/original/$logo',
-        //           fit: BoxFit.fill,
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // ),
         Positioned.fill(
           left: 10.w,
           right: 10.w,
